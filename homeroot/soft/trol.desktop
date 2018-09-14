@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=trolCommander
+Comment=trolCommander
+Type=Application
+Terminal=false
+X-GNOME-Autostart-enabled=false
+Categories=Other;
+
+Icon=/home/leo/.icons/trol.png
+
+# Exec=java -jar /home/.../launcher.jar
+Exec="/home/leo/soft/trol/trolcommander.sh"
+StartupWMClass=trolCommander

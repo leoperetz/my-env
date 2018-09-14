@@ -1,0 +1,7 @@
+
+~/soft/vscode/resources/app/extensions/node-debug/debugAdapter/out/node/terminal.js
+
+145         // var bashCommand = "cd \"" + dir + "\"; \"" + args.join('" "') + "\"; echo; read -p \"" + LinuxTerminalService.WAIT_MESSAGE + "\" -n1;";
+146         var bashCommand = "cd \"" + dir + "\"; \"" + args.join('" "') + "\"; echo; ";
+
+

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+path=`dirname $1`
+fname=`basename $1`
+fnameto="~$fname"
+cp -f $1 /tmp/$fnameto
+#f="T:\\$fnameto"
+#echo $f > /tmp/5656567
+echo "S:\pview\Pview_X5.exe T:\\$fnameto" > /tmp/pview.bat
+#dosemu -E 'T:\pview.bat'
+dosemu 'T:\pview.bat'

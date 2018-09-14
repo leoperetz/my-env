@@ -1,0 +1,130 @@
+;--- DOS CP-866 RU
+;--- Это обычный BATCH файл с возможностью выбора :)
+;--- ';' или '/' в начале строки - комментарий
+
+[PCB4,PRT4,PS4,PCB3,PRT3,PS3,PCB2,PCB1]
+;  --- Пример с полной обработкой вызова
+;  >>>> %setdir% - Моя собственная команда для установки текущей директории
+%SETDIR%
+;  >>>> Можно проверить наличие pcaddrv.sys в корне (и/или копировать соответствующий pcaddrv.sys в корень)
+if not exist \PCADDRV.SYS copy C:\PCADDRV.SYS \ >nul
+;  >>>> Установка близкой TEMP директории vs C:\WINDOWS\TEMP...
+set TEMP=C:\TEMP
+set PATH=C:\PCAD\EXE
+if not exist pccards.cfg copy %PATH%\pccards.cfg >nul
+;  >>>> Последний символ @ - включает установку такого же окна в редакторе используя VWIN
+PCCARDS -Q -R %1 @
+;  Сохранение лога предыдущих изменений
+if exist %TEMP%\pccards.cmd copy %TEMP%\pccards.cmd %TEMP%\pccards.cm$ >nul
+if exist pccards.cmd copy pccards.cmd %TEMP%\pccards.cmd >nul
+;  Удаление нафиг ненужных файлов для очистки директории
+if exist pccards.cmd del pccards.cmd
+if exist pccards.cm$ del pccards.cm$
+if exist pccards.dbg del pccards.dbg
+if exist pccards.cfg del pccards.cfg
+
+[SCH4,SYM4,SCH3,SYM3]
+;  --- Пример вызова уже имеющегося пакетного файла
+;  --- Обязательно CALL, если хотите, чтобы всё было нормально :)
+%setdir%
+call pc-caps %1 @
+
+[PCB8,PRT8,PS8]
+%setdir%
+set PATH=C:\PCAD\EXE85
+PCCARDS %1 @
+if exist %TEMP%\cards.cmd copy %TEMP%\cards.cmd %TEMP%\cards.cm$ >nul
+if exist cards.* copy cards.* %TEMP% >nul
+if exist cards.* del cards.*
+
+[SCH8,SYM8]
+%setdir%
+call pc-caps %1 @
+
+[PLT4,PLT8]
+/  --- Пример вызова Windows программы c длинным именем (LFN)
+"c:\pcad\PLT Print v2.5\PLT_Print.exe" %1 @
+
+/  А вот здесь и далее нужно подкорректировать папки где лежат P-CAD200x
+/  Т.к. вызов и выход из DOS сессии происходит до загрузки выбранной программы
+/  удаления временных файлов происходит от предыдущего.
+/  Ниже для SCH17 дан пример с ожиданием start /wait (закомментировано)
+/  %KEEPNAME% - грузит P-CAD200x из папки файла и с путём к файлу,
+/  т.е. можно грузить несколько файлов с текущий редактор из разных папок
+/  с сохранением (пониманием редактором) пути к каждому!
+
+[PCB12,PCB13,PCB14,PCB15]
+%setdir%keepname%
+if exist *.bak copy *.bak %TEMP%\last2000.bak >nul
+D:\ACCEL15\PCB %1
+
+[PCB16]
+%setdir%keepname%
+if exist *.bak copy *.bak %TEMP%\last2001.bak >nul
+"D:\P-CAD 2001\PCB" %1
+
+[PCB17]
+%setdir%keepname%
+:if exist *.err del *.err
+if exist *.bak copy *.bak %TEMP%\last2002.bak >nul
+:if exist *.bak del *.bak
+:if exist *.log del *.log
+:if exist *.tmp del *.tmp
+:if exist online~1.txt del online~1.txt
+"D:\P-CAD 2002\PCB" %1
+
+[SCH17]
+%setdir%keepname%
+:start /wait "D:\P-CAD 2002\SCH" %1
+if exist *.bak copy *.bak %TEMP%\last2002.bak >nul
+"D:\P-CAD 2002\SCH" %1
+
+/ ---P-CAD 2004 :)
+[SCH18]
+%setdir%keepname%
+if exist *.bak copy *.bak %TEMP%\last2004.bak >nul
+"D:\Program Files\P-CAD 2004\sch.exe" %1
+
+[PCB18]
+%setdir%keepname%
+if exist *.bak copy *.bak %TEMP%\last2004.bak >nul
+"D:\Program Files\P-CAD 2004\pcb.exe" %1
+
+/  --- Пример очистки папки P-CAD 200x путём заброски файла *.err или *.bak на Ярлык X5
+[ERR0,TMP0]
+%setdir%
+echo Clearing folder which contains %1
+echo Deleting *.err ...
+if exist *.err del *.err
+echo Moving *.bak to %TEMP%\ ...
+if exist *.bak copy *.bak %TEMP%\lastCLRx.bak >nul
+if exist *.bak del *.bak
+echo Deleting *.log ...
+if exist *.log del *.log
+echo Deleting *.tmp ...
+if exist *.tmp del *.tmp
+echo Deleting *.err.tmp ...
+if exist online~1.txt del online~1.txt
+echo Folder clearing done :)
+
+[PDF32]
+echo Acrobat Reader %1
+if exist "C:\Program Files\Adobe\Acrobat 4.0\Reader\Acrord32.exe" "C:\Program Files\Adobe\Acrobat 4.0\Reader\Acrord32.exe" %1
+if exist "C:\Program Files\Adobe\Acrobat 5.0\Reader\Acrord32.exe" "C:\Program Files\Adobe\Acrobat 5.0\Reader\Acrord32.exe" %1
+
+[PDF4,PDF6,PDF7,PDF8]
+:o) Есть просмотрщик PDIF? :)
+rem coo-coo!
+goto ASDF
+dir %1 /b
+:ASDF
+dir %1
+pause >nul
+
+[JPG0,GIF0,BMP0]
+"C:\Program Files\Applications\Irfan\i_view32.exe" %1
+
+[GERBER,EMMA]
+C:\VOV\BC\VOV\PVIEW_X5.GEE\PVIEW_X5.EXE %1
+
+[END]

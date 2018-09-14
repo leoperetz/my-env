@@ -1,0 +1,3 @@
+#!/bin/bash
+
+dosemu -E 'S:\pview\Pview_X5.exe'

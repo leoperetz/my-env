@@ -1,0 +1,16 @@
+com.mucommander.ui.dialog.file.FindFileDialog=695,325,640,480
+com.mucommander.ui.dialog.file.DeleteDialog=773,382,360,156
+com.mucommander.ui.dialog.file.MoveDialog=740,410,360,266
+com.mucommander.ui.dialog.QuestionDialog=852,458,360,140
+com.mucommander.ui.dialog.file.MakeDirectoryFileDialog#dir=872,442,320,168
+com.mucommander.ui.dialog.file.ChangePermissionsDialog=880,427,260,280
+com.mucommander.ui.viewer.EditorFrame#com.mucommander.ui.viewer.text.TextEditor=615,265,800,600
+com.mucommander.ui.dialog.pref.theme.ThemeEditorDialog=456,347,800,562
+com.mucommander.ui.dialog.file.MakeDirectoryFileDialog#file=855,461,320,209
+com.mucommander.ui.dialog.server.ShowServerConnectionsDialog=862,409,400,300
+com.mucommander.ui.dialog.pref.general.GeneralPreferencesDialog=536,308,640,641
+com.mucommander.ui.dialog.file.PropertiesDialog=688,402,554,315
+com.mucommander.ui.dialog.file.CopyDialog=852,393,360,266
+com.mucommander.ui.dialog.FocusDialog=835,499,360,135
+com.mucommander.ui.dialog.file.ProgressDialog=715,359,410,369
+com.mucommander.ui.dialog.file.FileCollisionDialog=882,376,360,370

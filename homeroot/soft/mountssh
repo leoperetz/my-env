@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if mount | grep /home.leo.devssh > /dev/null; then
+	sudo umount -f /home/leo/devssh/mnt
+fi
+
+# sudo sshfs  -F /home/leo/.ssh/config -o allow_other dev: /home/leo/devssh
+# sshfs  -F /home/leo/.ssh/config  -o umask=000 -o uid=1103 -o gid=48 -o allow_other  dev:/home/  /home/leo/devssh
+sshfs  -F /home/leo/.ssh/config  -o uid=1103,gid=48,allow_other,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3  dev:/home/  /home/leo/devssh/mnt
+
+
+# ALT: /etc/fstab
+# REQS: sshfs; auth by key on remote host;
+# WARN: it can freeze the system! 
+
+# sshfs#<username>@<remotehost>:/home/         /home/leo/devssh/         fuse  defaults,auto_cache,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,allow_other,uid=1103,gid=48,IdentityFile=/home/leo/.ssh/id_rsa  0  2
+# or:
+# sshfs#<username>@<remotehost>:/home/leo/     /home/leo/devssh/leo/     fuse  kernel_cache,nonempty,auto_cache,no_readahead,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,allow_other,uid=1103,gid=48,IdentityFile=/home/leo/.ssh/id_rsa  0  2
+# sshfs#<username>@<remotehost>:/home/folder/  /home/leo/devssh/folder/  fuse  kernel_cache,nonempty,auto_cache,no_readahead,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,allow_other,uid=1103,gid=48,IdentityFile=/home/leo/.ssh/id_rsa  0  2

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<commands>
+    <command alias="edit" value="subl $f" filemask="" display="edit"/>
+    <command alias="view" value="/home/leo/soft/pview/pview $f" filemask="*.pcb,*.sch,*.plt,*.prt,*.sym,*.ps,*.drl,*.ncd,*.nlt,*.slb,*.plb,*.pkg,*.plc,*.cad" display="pview"/>
+    <command alias="view" value="/home/leo/soft/sviewgl -p -c -C 555555 -cw $f" filemask="*.png,*.jpg,*.jpeg,*.bmp,*.tiff,*.tif,*.psd,*.gif,*.tga,*.ico,*.pnm,*.dds,*.xwd,*.scr,*.xpm,*.webp,*.exr" display="sviewgl"/>
+    <command alias="view" value="/usr/bin/shotwell $f" filemask="*.png2,*.jpg2,*.jpeg2,*.bmp2,*.tiff2,*.tif2" display="shotwell"/>
+    <command alias="view" value="/usr/bin/eog $f" filemask="*.gif2" display="gifview"/>
+    <command alias="view" value="/usr/bin/totem $f" filemask="*.mp4,*.avi,*.mkv,*.mov" display="mview"/>
+    <command alias="view" value="/home/leo/soft/uview/uview $f" filemask="" display="view"/>
+    <command alias="view" value="/usr/bin/freecad $f" filemask="*.DXF,*.dxf,*.dwg" display="cad"/>
+    <command alias="view" value="/home/leo/soft/lay6 $f" filemask="*.lay6" display="lay6"/>
+</commands>
