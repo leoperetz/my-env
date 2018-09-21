@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=HeidiSQL
+Comment=7.0.5
+Exec="wine /home/leo/soft/db/heidi/portable.9.5/heidisql.exe"
+Icon=~/.icons/heidi.png
+Terminal=false

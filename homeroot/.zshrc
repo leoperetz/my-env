@@ -64,7 +64,7 @@ DISABLE_AUTO_UPDATE="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  last-working-dir    
+  last-working-dir
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -121,6 +121,7 @@ alias logout='sudo killall lightdm'
 alias comp="php -d default_socket_timeout=1 -d xdebug.remote_enable=0 /usr/local/bin/composer"
 
 #alias moun="~/mountssh && ~/port3306"
+#alias godev="ssh dev"
 
 alias ungz="~/soft/ungz $1"
 alias unbz="~/soft/unbzip $1"
@@ -132,3 +133,4 @@ alias storm="phpstorm.sh"
 alias heidi="wine ~/soft/db/heidi/portable.9.5/heidisql.exe"
 alias trol="~/soft/trol/trolcommander.sh"
 
+export HISTCONTROL=ignoredups

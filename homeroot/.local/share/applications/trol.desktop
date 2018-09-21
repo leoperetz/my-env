@@ -6,8 +6,9 @@ Terminal=false
 X-GNOME-Autostart-enabled=false
 Categories=Other;
 
-Icon=/home/leo/.icons/trol.png
+Icon=~/.icons/trol.png
 
 # Exec=java -jar /home/.../launcher.jar
-Exec="/home/leo/soft/trol/trolcommander.sh"
+Exec="$HOME/soft/trol/trolcommander.sh"
+
 StartupWMClass=trolCommander
