@@ -121,7 +121,7 @@ alias logout='sudo killall lightdm'
 alias comp="php -d default_socket_timeout=1 -d xdebug.remote_enable=0 /usr/local/bin/composer"
 
 #alias moun="~/mountssh && ~/port3306"
-#alias godev="ssh dev"
+alias godev="ssh dev"
 
 alias ungz="~/soft/ungz $1"
 alias unbz="~/soft/unbzip $1"
@@ -134,3 +134,6 @@ alias heidi="wine ~/soft/db/heidi/portable.9.5/heidisql.exe"
 alias trol="~/soft/trol/trolcommander.sh"
 
 export HISTCONTROL=ignoredups
+
+# rebuild font cache (ex, for changes in ~/.fonts)
+alias refont="sudo fc-cache -f -v"
