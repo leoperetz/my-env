@@ -10,7 +10,8 @@ apply patch to kenrel and compile/install/set it
 see: /w/kernel/...
 
 3)
-apply dkms:
+check for new version https://github.com/cyberang3l/input-wacom-dkms
+and apply dkms:
 install-wacom.sh
 
 4)
