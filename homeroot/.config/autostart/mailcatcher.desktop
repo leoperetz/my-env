@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=mailcatcher
+Exec="/usr/local/bin/mailcatcher"
+Type=Application
+X-GNOME-Autostart-enabled=true
