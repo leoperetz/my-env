@@ -1,0 +1,14 @@
+#!/bin/sh
+
+### copy/ln to /etc/network/if-up.d/
+
+# /sbin/route del -net 0.0.0.0 netmask 0.0.0.0 gw 172.16.0.41 dev tun0
+
+GW=`route -n | grep -Po '^0.0.0.0\s+(172[^\s]+).*\s([^\s]+)$' | awk '{ print $2 }'`
+DEV=`route -n | grep -Po '^0.0.0.0\s+(172[^\s]+).*\s([^\s]+)$' | awk '{ print $8 }'`
+/sbin/route del -net 0.0.0.0 netmask 0.0.0.0 gw $GW dev $DEV
+
+exit 0
+
+
+

@@ -12,7 +12,7 @@ X-GNOME-Autostart-enabled=true
 
 [Desktop Action About]
 Name=About
-Exec=easystroke about
+\Exec=easystroke about
 
 [Desktop Action Enable]
 Name=Enable

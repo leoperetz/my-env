@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# add to cron
+# */2 *   * * *   root    bash /home/leo/soft/vpn-check
+
+ping -W 3 -c3 8.8.8.8  > /tmp/pingreport
+result=`grep "0 received" /tmp/pingreport`
+truncresult="`echo "$result" | sed 's/^\(.................................\).*$/\1/'`"
+if [[ $truncresult == "3 packets transmitted, 0 received" ]]; then
+	#pon company-vpn
+	nmcli con down id openvpn
+	nmcli con up id openvpn
+fi

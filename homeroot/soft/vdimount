@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#
+# Mount a VirtualBox drive image (vdi)
+#
+
+# unmount first
+
+if mount | grep /nbd0 > /dev/null; then
+	sudo umount /dev/nbd0p1 \
+		&& sudo qemu-nbd -d /dev/nbd0
+fi
+
+# mount
+
+sudo rmmod nbd && \
+	sudo modprobe nbd max_part=8 && \
+	sudo qemu-nbd -c /dev/nbd0  /home/leo/VirtualBox\ VMs/debian95/tmpworkdisk.vdi && \
+	sudo mount /dev/nbd0p1 /mnt/work
